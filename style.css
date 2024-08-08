@@ -773,3 +773,13 @@ p {
 .btn-danger {
     background-color: #dc3545;
 }
+@media (max-width: 768px) {
+    .view-all-links {
+        flex-direction: column;
+        gap: 1rem; /* Space between buttons */
+    }
+
+    .view-all .btn {
+        margin: 0 1rem; /* Margin on left and right */
+    }
+}
