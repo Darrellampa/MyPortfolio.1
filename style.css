@@ -701,3 +701,75 @@ p {
 	}
 }
 /* End  Media Query For Desktop */
+
+
+/* CSS for View All Section */
+.view-all {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.view-all-links {
+    display: flex;
+    justify-content: center;
+    gap: 1cm; /* Adjust the gap between buttons */
+    margin-top: 1rem;
+	padding-top: 1rem;
+}
+
+.view-all .btn {
+    font-size: 1rem;
+	background-color: solid crimson !important;
+}
+
+/* CSS for project gallery */
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.project-thumb {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-gallery-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 30%;
+    margin: 10px;
+}
+
+.project-gallery-item img {
+    height: 20rem; /* Fixed height */
+    width: auto; /* Resizing width automatically */
+    object-fit: contain; /* Adjust the image to fit within the container */
+}
+
+/* Button styles */
+.btn {
+    padding: 2px 2px;
+    background-color: #eb1919;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #ff0000;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
