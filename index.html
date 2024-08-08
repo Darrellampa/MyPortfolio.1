@@ -299,6 +299,19 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    >
   <script src="./app.js"></script>
+    <script>
+  function toggleProjects(projectId) {
+  const projectGalleries = document.querySelectorAll('.project-gallery');
+  projectGalleries.forEach(gallery => {
+    gallery.style.display = 'none';
+  });
+
+  const selectedGallery = document.getElementById(projectId);
+  if (selectedGallery) {
+    selectedGallery.style.display = 'flex';
+  }
+}
+  </script>
 </body>
 
 </html>
