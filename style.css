@@ -731,30 +731,58 @@ p {
     margin-top: 2rem;
 }
 
-.project-thumb {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-}
-
-.project-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .project-gallery-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     flex: 1 1 30%;
     margin: 10px;
+    overflow: hidden;
 }
 
 .project-gallery-item img {
     height: 20rem; /* Fixed height */
-    width: auto; /* Resizing width automatically */
-    object-fit: contain; /* Adjust the image to fit within the container */
+    width: 100%; /* Ensure the image covers the full width */
+    object-fit: cover; /* Adjust the image to fit within the container */
+    transition: transform 0.3s ease;
+}
+
+.project-gallery-item:hover img {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.project-gallery-item::after {
+    content: "View";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-gallery-item:hover::after {
+    opacity: 1; /* Show the "View" text on hover */
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.view-all-links {
+    display: flex;
+    justify-content: center;
+    gap: 1cm; /* Adjust the gap between buttons */
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.view-all .btn {
+    font-size: 1rem;
+    background-color: crimson !important;
 }
 
 /* Button styles */
@@ -773,6 +801,7 @@ p {
 .btn-danger {
     background-color: #dc3545;
 }
+
 @media (max-width: 768px) {
     .view-all-links {
         flex-direction: column;
