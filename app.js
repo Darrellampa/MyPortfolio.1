@@ -1,25 +1,40 @@
-const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
-const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
-const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
-const header = document.querySelector('.header.container');
-
-hamburger.addEventListener('click', () => {
-	hamburger.classList.toggle('active');
-	mobile_menu.classList.toggle('active');
-});
-
-document.addEventListener('scroll', () => {
-	var scroll_position = window.scrollY;
-	if (scroll_position > 250) {
-		header.style.backgroundColor = '#29323c';
-	} else {
-		header.style.backgroundColor = 'transparent';
-	}
-});
-
-menu_item.forEach((item) => {
-	item.addEventListener('click', () => {
-		hamburger.classList.toggle('active');
-		mobile_menu.classList.toggle('active');
-	});
-});
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('#nav-links');
+toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰';});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');if(toggle)toggle.textContent='☰';}));
+document.querySelector('#year').textContent=new Date().getFullYear();
+const websites=[{"name": "Personal Website", "category": "Practice", "url": "https://darrellampa.github.io/act3.personalWebsite/", "slug": "act3.personalWebsite"}, {"name": "Atelier Haus", "category": "Websites", "url": "https://darrellampa.github.io/Atekier-Haus/", "slug": "Atekier-Haus"}, {"name": "Axiom Cycle", "category": "Websites", "url": "https://darrellampa.github.io/Axiom-Cycle/", "slug": "Axiom-Cycle"}, {"name": "Bahay Bites", "category": "Websites", "url": "https://darrellampa.github.io/Bahay-Bites/", "slug": "Bahay-Bites"}, {"name": "Dew Play", "category": "Websites", "url": "https://darrellampa.github.io/Dew-Play/", "slug": "Dew-Play"}, {"name": "Dice Game", "category": "Games & Practice", "url": "https://darrellampa.github.io/Dice.1/", "slug": "Dice.1"}, {"name": "Flora", "category": "Websites", "url": "https://darrellampa.github.io/Flora/", "slug": "Flora"}, {"name": "Rock Paper Scissors", "category": "Games & Practice", "url": "https://darrellampa.github.io/game-R.s.p/", "slug": "game-R.s.p"}, {"name": "RPS Game", "category": "Games & Practice", "url": "https://darrellampa.github.io/game-rsp/", "slug": "game-rsp"}, {"name": "Gawang Kamay", "category": "Websites", "url": "https://darrellampa.github.io/Gawang-Kamay/", "slug": "Gawang-Kamay"}, {"name": "IT Certification Practice", "category": "Games & Practice", "url": "https://darrellampa.github.io/it-cert-automation-practice/", "slug": "it-cert-automation-practice"}, {"name": "Kape Amihan", "category": "Websites", "url": "https://darrellampa.github.io/Kape-Amihan/", "slug": "Kape-Amihan"}, {"name": "Kape Kanto", "category": "Websites", "url": "https://darrellampa.github.io/Kape-Kanto/", "slug": "Kape-Kanto"}, {"name": "Kiosk Website", "category": "Websites", "url": "https://darrellampa.github.io/kiosk1/", "slug": "kiosk1"}, {"name": "Little Loom", "category": "Websites", "url": "https://darrellampa.github.io/Little_Loom/", "slug": "Little_Loom"}, {"name": "Lunea Furniture", "category": "Websites", "url": "https://darrellampa.github.io/lunea_Furniture/", "slug": "lunea_Furniture"}, {"name": "Muse Studio", "category": "Websites", "url": "https://darrellampa.github.io/Muse-Studio/", "slug": "Muse-Studio"}, {"name": "My First App", "category": "Games & Practice", "url": "https://darrellampa.github.io/Myfirstapp/", "slug": "Myfirstapp"}, {"name": "Previous Portfolio", "category": "Portfolio", "url": "https://darrellampa.github.io/MyPortfolio.1/", "slug": "MyPortfolio.1"}, {"name": "New Project", "category": "Games & Practice", "url": "https://darrellampa.github.io/newProject/", "slug": "newProject"}, {"name": "Nook Supply", "category": "Websites", "url": "https://darrellampa.github.io/Nook-Supply/", "slug": "Nook-Supply"}, {"name": "Olive Object", "category": "Websites", "url": "https://darrellampa.github.io/Olive-Object/", "slug": "Olive-Object"}, {"name": "Paw Parade", "category": "Websites", "url": "https://darrellampa.github.io/PawParade/", "slug": "PawParade"}, {"name": "Personal Website / HairDay", "category": "Websites", "url": "https://darrellampa.github.io/Personal-Website/", "slug": "Personal-Website"}, {"name": "PlayPlanet", "category": "Websites", "url": "https://darrellampa.github.io/PlayPlanet/", "slug": "PlayPlanet"}, {"name": "Project 1", "category": "Games & Practice", "url": "https://darrellampa.github.io/project1/", "slug": "project1"}, {"name": "Project 10", "category": "Games & Practice", "url": "https://darrellampa.github.io/project10/", "slug": "project10"}, {"name": "Project 11", "category": "Games & Practice", "url": "https://darrellampa.github.io/project11/", "slug": "project11"}, {"name": "Project 12", "category": "Games & Practice", "url": "https://darrellampa.github.io/PROJECT12/", "slug": "PROJECT12"}, {"name": "Project 7", "category": "Games & Practice", "url": "https://darrellampa.github.io/project7/", "slug": "project7"}, {"name": "Rivet Street", "category": "Websites", "url": "https://darrellampa.github.io/Rivet_street/", "slug": "Rivet_street"}, {"name": "RPS Darrel", "category": "Games & Practice", "url": "https://darrellampa.github.io/RSP-Darrel-D/", "slug": "RSP-Darrel-D"}, {"name": "Sari-Sari", "category": "Websites", "url": "https://darrellampa.github.io/Sari-Sari/", "slug": "Sari-Sari"}, {"name": "Seleste HTML CSS", "category": "Websites", "url": "https://darrellampa.github.io/seleste_html_css/", "slug": "seleste_html_css"}, {"name": "Sentinel Security", "category": "Websites", "url": "https://darrellampa.github.io/Sentinel-Security/", "slug": "Sentinel-Security"}, {"name": "Lesson 1", "category": "Games & Practice", "url": "https://darrellampa.github.io/si_lesson1/", "slug": "si_lesson1"}, {"name": "Sole Club", "category": "Websites", "url": "https://darrellampa.github.io/Sole-Club/", "slug": "Sole-Club"}, {"name": "Tanim Tayo", "category": "Websites", "url": "https://darrellampa.github.io/Tanim-Tayo/", "slug": "Tanim-Tayo"}, {"name": "Test 1", "category": "Games & Practice", "url": "https://darrellampa.github.io/test1/", "slug": "test1"}, {"name": "Test 2", "category": "Games & Practice", "url": "https://darrellampa.github.io/test2/", "slug": "test2"}, {"name": "TinDog", "category": "Websites", "url": "https://darrellampa.github.io/tindog/", "slug": "tindog"}, {"name": "Vanta", "category": "Websites", "url": "https://darrellampa.github.io/vanta/", "slug": "vanta"}, {"name": "Vara Atelier", "category": "Websites", "url": "https://darrellampa.github.io/Vara-Atelier/", "slug": "Vara-Atelier"}];
+const categories={
+ va:{title:'Amazon & Shopify Product Listing',description:'Space for your actual product listing, product research, and store-management screenshots. Add your own images in the img folder when ready.',items:[
+  {name:'Amazon Product Listing',category:'Portfolio sample slot',image:'img/amazon-product-listing.png'},
+  {name:'Shopify Product Listing',category:'Portfolio sample slot',image:'img/shopify-product-listing.png'},
+  {name:'Product Research',category:'Portfolio sample slot',image:'img/product-research.png'},
+  {name:'Shopify Store Demo',category:'Existing online-store demo',url:'https://project6dar.myshopify.com/',image:'img/shopify1.png'}],note:'The first three cards are placeholders until you add your own sample screenshots. The Shopify demo link may require a password or sign-in.'},
+ websites:{title:'All Website Works',description:'Browse the 43 GitHub Pages project links you shared. Website previews require internet and a third-party screenshot service.',items:websites,note:'Six more website slots are reserved. Add their names and URLs to the websites array in app.js when ready.'},
+ design:{title:'Web Design · Figma',description:'Your Figma website and UI design projects will appear here when you share their links and previews.',items:[{name:'Figma Design 01',category:'Add your Figma link',image:'img/figma-design-1.png'},{name:'Figma Design 02',category:'Add your Figma link',image:'img/figma-design-2.png'}],note:'No Figma URLs were provided yet. Replace the placeholders with actual links and screenshots.'},
+ wordpress:{title:'WordPress Projects',description:'Elementor, WordPress content, and Oxygen Builder work.',items:[{name:'Seleste · Elementor',category:'WordPress / Elementor',url:'https://dev-selesteelementor.pantheonsite.io/',image:'img/elemetorWp.png'},{name:'Imroz · Elementor',category:'WordPress / Elementor',url:'https://dev-imrozproject.pantheonsite.io/',image:'img/imroz.png'},{name:'Neso IT Solution',category:'WordPress / Oxygen Builder',url:'https://dev-nesoitsolution.pantheonsite.io/',image:'img/neso.png'}],note:'Some older WordPress demos may be offline or unavailable.'}
+};
+const dialog=document.querySelector('#portfolio-dialog');
+const grid=document.querySelector('#gallery-grid');
+const title=document.querySelector('#gallery-title');
+const desc=document.querySelector('#gallery-description');
+const foot=document.querySelector('#gallery-footer');
+const input=document.querySelector('#gallery-search');
+const tools=document.querySelector('#gallery-tools');
+const count=document.querySelector('#gallery-count');
+let active='websites';let opener=null;
+function thumbnail(item,cat){return item.image||('https://image.thum.io/get/width/700/crop/450/noanimate/'+item.url);}
+function card(item,cat){const article=document.createElement('article');article.className='gallery-card';
+ const preview=document.createElement('div');preview.className='gallery-preview';
+ const img=document.createElement('img');img.src=thumbnail(item,cat);img.alt='Preview of '+item.name;img.loading='lazy';img.referrerPolicy='no-referrer';
+ const fallback=document.createElement('div');fallback.className='gallery-fallback';fallback.textContent=item.name;
+ img.addEventListener('error',()=>{img.hidden=true;fallback.classList.add('visible');});preview.append(img,fallback);
+ if(item.url){const link=document.createElement('a');link.className='gallery-view';link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='View Live ↗';link.setAttribute('aria-label','View live: '+item.name);preview.append(link);}else{const label=document.createElement('span');label.className='gallery-not-ready';label.textContent='Add sample / link';preview.append(label);}
+ const body=document.createElement('div');body.className='gallery-card-text';const catLabel=document.createElement('small');catLabel.textContent=item.category||'Website';const name=document.createElement('strong');name.textContent=item.name;body.append(catLabel,name);article.append(preview,body);return article;}
+ function render(){const search=input.value.trim().toLowerCase();const items=categories[active].items.filter(i=>!search||[i.name,i.category,i.slug].join(' ').toLowerCase().includes(search));grid.replaceChildren(...items.map(i=>card(i,active)));count.textContent=items.length+' projects';if(active==='websites'&&!search){const extra=document.createElement('div');extra.className='gallery-upcoming';extra.textContent='＋ 6 more websites to be added';grid.append(extra);}}
+ document.querySelectorAll('[data-gallery]').forEach(btn=>btn.addEventListener('click',()=>{active=btn.dataset.gallery;opener=btn;title.textContent=categories[active].title;desc.textContent=categories[active].description;foot.textContent=categories[active].note;input.value='';tools.hidden=active!=='websites';render();dialog.showModal();document.body.classList.add('modal-open');}));
+ input.addEventListener('input',render);
+ function close(){dialog.close();}
+ document.querySelector('#close-gallery').addEventListener('click',close);
+ dialog.addEventListener('click',event=>{if(event.target===dialog)close();});
+ dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus();});
